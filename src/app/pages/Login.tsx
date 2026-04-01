@@ -5,12 +5,13 @@ import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
-import { Sparkles, Loader2 } from 'lucide-react';
+import { Loader2, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import { GoogleLogin } from '@react-oauth/google';
 
 export function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
@@ -19,82 +20,98 @@ export function Login() {
     setLoading(true);
     try {
       await login(formData.email, formData.password);
-      toast.success('Muvaffaqiyatli kirdingiz!');
-
-      // Check onboarding status from updated user
-      const savedUser = localStorage.getItem('bilim_user');
-      if (savedUser) {
-        const userData = JSON.parse(savedUser);
-        if (userData.onboardingCompleted) {
-          navigate('/dashboard');
-        } else {
-          navigate('/onboarding');
-        }
-      } else {
-        navigate('/onboarding');
-      }
+      toast.success("Xush kelibsiz!");
+      navigate('/dashboard');
     } catch (error: any) {
-      toast.error(error.message || 'Kirish xatosi');
+      toast.error(error.message || "Kirish xatosi");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 relative overflow-hidden">
-      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-
-      <Card className="w-full max-w-md relative z-10 bg-white/80 backdrop-blur-xl border-primary/5 shadow-xl shadow-primary/5 rounded-2xl">
-        <CardHeader className="text-center pb-2">
+    <div className="min-h-screen flex items-center justify-center px-6">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
-              <Sparkles className="h-8 w-8 text-white" />
+            <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
+              <Sparkles className="h-8 w-8 text-purple-600" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold">BilimAi'ga Kirish</CardTitle>
-          <CardDescription>
-            Ta'lim sayohatingizni davom ettiring
-          </CardDescription>
+          <CardTitle className="text-2xl">HamrohAI</CardTitle>
+          <CardDescription>Hisobingizga kiring</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-4">
+          <div className="flex justify-center w-full">
+            <GoogleLogin
+              onSuccess={async (credentialResponse) => {
+                if (credentialResponse.credential) {
+                  try {
+                    await loginWithGoogle(credentialResponse.credential);
+                    navigate('/onboarding');
+                  } catch (e: any) {
+                    toast.error(e.message || "Google bilan ulanishda xatolik");
+                  }
+                }
+              }}
+              onError={() => {
+                toast.error("Google avtorizatsiyasi bekor qilindi");
+              }}
+            />
+          </div>
+
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-muted-foreground">yoki</span>
+            </div>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
-                id="email" type="email" placeholder="email@example.com"
+                id="email"
+                type="email"
+                placeholder="email@example.com"
                 value={formData.email}
-                onChange={e => setFormData({ ...formData, email: e.target.value })}
-                required disabled={loading}
-                className="h-12 rounded-xl bg-white/80 border-primary/10 focus:border-primary/40"
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+                disabled={loading}
+                className="bg-gray-50 text-gray-900"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Parol</Label>
               <Input
-                id="password" type="password" placeholder="••••••••"
+                id="password"
+                type="password"
+                placeholder="••••••••"
                 value={formData.password}
-                onChange={e => setFormData({ ...formData, password: e.target.value })}
-                required disabled={loading}
-                className="h-12 rounded-xl bg-white/80 border-primary/10 focus:border-primary/40"
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                required
+                disabled={loading}
+                className="bg-gray-50 text-gray-900"
               />
             </div>
-            <Button type="submit" className="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white font-semibold shadow-lg shadow-primary/20" disabled={loading}>
+            <Button type="submit" className="w-full" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Kirish
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-3 pt-0">
-          <div className="text-sm text-center text-muted-foreground">
+        <CardFooter className="flex flex-col gap-3">
+          <div className="text-sm text-center text-gray-600">
             Hisobingiz yo'qmi?{' '}
-            <Link to="/signup" className="text-primary font-medium hover:underline">
+            <Link to="/signup" className="text-purple-600 hover:underline">
               Ro'yxatdan o'ting
             </Link>
           </div>
           <div className="text-sm text-center">
-            <Link to="/" className="text-muted-foreground hover:text-primary hover:underline">
-              ← Bosh sahifaga
+            <Link to="/" className="text-gray-600 hover:underline">
+              ← Bosh sahifaga qaytish
             </Link>
           </div>
         </CardFooter>

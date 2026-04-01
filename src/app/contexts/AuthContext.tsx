@@ -1,120 +1,150 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-export interface UserProfile {
-  personality_type: string;
-  mindset_label: string;
-  motivation_profile: string;
-  learning_style_summary: string;
-  ai_tone_setting: string;
-  risk_factors: string[];
-  strengths: string[];
-  recommended_subjects: string[];
-  weekly_plan: string;
-  full_summary: string;
-}
+import { apiService } from '@/app/services/apiService';
 
 export interface User {
   id: string;
   email: string;
-  name: string;
-  onboardingCompleted: boolean;
-  onboardingData: Record<string, any>;
-  iqScore: number;
-  iqLevel: string;
-  iqBreakdown: Record<string, number>;
-  aiProfile: UserProfile | null;
+  name?: string;
+  isAdmin?: boolean;
+  onboardingCompleted?: boolean;
+  onboardingProgress?: string;
+  chatHistory?: any[];
+  provider?: 'email' | 'google';
+  onboardingData?: Record<string, any>;
+  iqScore?: number;
+  psychologicalProfile?: string;
 }
 
 interface AuthContextType {
   user: User | null;
+  accessToken: string | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  signup: (email: string, password: string, name: string) => Promise<void>;
+  signup: (email: string, password: string) => Promise<{requiresOtp: boolean, email: string}>;
+  verifyOtpAndLogin: (email: string, code: string) => Promise<void>;
+  loginWithGoogle: (credential: string) => Promise<void>;
   logout: () => void;
-  updateUser: (updates: Partial<User>) => void;
+  updateUser: (updates: Partial<User>) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('bilim_user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-    setLoading(false);
+    const fetchMe = async () => {
+        const savedToken = localStorage.getItem('hamrohai_token');
+        if (savedToken) {
+           try {
+             // Let it populate automatically from headers
+             const data = await apiService.getMe();
+             setAccessToken(savedToken);
+             setUser({
+                id: `user_${data.email}`,
+                email: data.email,
+                onboardingCompleted: data.onboardingCompleted,
+                onboardingProgress: data.onboardingProgress,
+                chatHistory: data.chatHistory,
+                onboardingData: data.onboardingData,
+                iqScore: data.iqScore,
+                psychologicalProfile: data.psychologicalProfile ? JSON.stringify(data.psychologicalProfile) : undefined,
+                provider: data.provider || 'email',
+             });
+           } catch (e) {
+             console.log("Token invalid or expired", e);
+             localStorage.removeItem('hamrohai_token');
+           }
+        }
+        setLoading(false);
+    };
+    fetchMe();
   }, []);
 
-  const persistUser = (userData: User) => {
-    setUser(userData);
-    localStorage.setItem('bilim_user', JSON.stringify(userData));
-    // Also update in users list
-    const usersData = localStorage.getItem('bilim_users');
-    const users = usersData ? JSON.parse(usersData) : [];
-    const idx = users.findIndex((u: any) => u.id === userData.id);
-    if (idx >= 0) {
-      users[idx] = { ...users[idx], ...userData };
-    }
-    localStorage.setItem('bilim_users', JSON.stringify(users));
+  const signup = async (email: string, password: string) => {
+    // Endi bu login qilmaydi, aksincha OTP kod soralganini qaytaradi
+    const response = await apiService.register(email, password);
+    return response;
   };
 
-  const signup = async (email: string, password: string, name: string) => {
-    const usersData = localStorage.getItem('bilim_users');
-    const users = usersData ? JSON.parse(usersData) : [];
-
-    if (users.find((u: any) => u.email === email)) {
-      throw new Error("Bu email allaqachon ro'yxatdan o'tgan");
-    }
-
-    const newUser: User & { password: string } = {
+  const verifyOtpAndLogin = async (email: string, code: string) => {
+    const data = await apiService.verifyOtp(email, code);
+    const userData: User = {
       id: `user_${Date.now()}`,
-      email,
-      name,
-      password,
+      email: data.email,
       onboardingCompleted: false,
-      onboardingData: {},
-      iqScore: 0,
-      iqLevel: '',
-      iqBreakdown: {},
-      aiProfile: null,
+      provider: 'email',
     };
 
-    users.push(newUser);
-    localStorage.setItem('bilim_users', JSON.stringify(users));
-
-    const { password: _, ...userData } = newUser;
-    persistUser(userData);
+    setAccessToken(data.accessToken);
+    setUser(userData);
+    localStorage.setItem('hamrohai_token', data.accessToken);
   };
 
   const login = async (email: string, password: string) => {
-    const usersData = localStorage.getItem('bilim_users');
-    const users = usersData ? JSON.parse(usersData) : [];
+    const data = await apiService.login(email, password);
+    const userData: User = {
+      id: `user_${Date.now()}`,
+      email: data.email,
+      onboardingCompleted: data.onboardingCompleted,
+      onboardingProgress: data.onboardingProgress,
+      chatHistory: data.chatHistory,
+      onboardingData: data.onboardingData,
+      iqScore: data.iqScore,
+      psychologicalProfile: data.psychologicalProfile ? JSON.stringify(data.psychologicalProfile) : undefined,
+      provider: 'email',
+    };
 
-    const found = users.find((u: any) => u.email === email && u.password === password);
-    if (!found) {
-      throw new Error("Email yoki parol noto'g'ri");
+    setAccessToken(data.accessToken);
+    setUser(userData);
+    localStorage.setItem('hamrohai_token', data.accessToken);
+  };
+
+  const loginWithGoogle = async (credential: string) => {
+    const data = await apiService.googleLogin(credential);
+    const userData: User = {
+      id: `user_${Date.now()}`,
+      email: data.email,
+      onboardingCompleted: data.onboardingCompleted,
+      onboardingProgress: data.onboardingProgress,
+      chatHistory: data.chatHistory,
+      onboardingData: data.onboardingData,
+      iqScore: data.iqScore,
+      psychologicalProfile: data.psychologicalProfile ? JSON.stringify(data.psychologicalProfile) : undefined,
+      provider: 'google',
+    };
+
+    setAccessToken(data.accessToken);
+    setUser(userData);
+    localStorage.setItem('hamrohai_token', data.accessToken);
+  };
+
+  const updateUser = async (updates: Partial<User>) => {
+    if (!user) return;
+    
+    // Use functional update to avoid state race conditions
+    setUser(prev => {
+      if (!prev) return prev;
+      return { ...prev, ...updates };
+    });
+
+    try {
+       await apiService.updateUser(updates);
+    } catch (e) {
+       console.error("Failed to sync auth context with backend", e);
     }
-
-    const { password: _, ...userData } = found;
-    persistUser(userData);
   };
 
   const logout = () => {
+    setAccessToken(null);
     setUser(null);
-    localStorage.removeItem('bilim_user');
-  };
-
-  const updateUser = (updates: Partial<User>) => {
-    if (!user) return;
-    const updated = { ...user, ...updates };
-    persistUser(updated);
+    localStorage.removeItem('hamrohai_token');
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout, updateUser }}>
+    <AuthContext.Provider value={{ user, accessToken, loading, login, signup, verifyOtpAndLogin, loginWithGoogle, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
