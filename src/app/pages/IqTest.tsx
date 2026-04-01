@@ -43,7 +43,7 @@ export function IqTest() {
     const points = selectedOpt?.point || 0;
     
     // Adjusted Formula (70% Base + 30% Time-weighted): points * (0.7 + 0.3 * (8 / duration))
-    const weightedPoints = points * (0.7 + 0.3 * (8 / durationSeconds));
+    const weightedPoints = points * (0.7 + 0.3 * (12 / durationSeconds));
     const newTotalWeighted = totalWeightedPoints + weightedPoints;
     setTotalWeightedPoints(newTotalWeighted);
 
