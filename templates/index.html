@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Onboarding Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="blob shape-1"></div>
+    <div class="blob shape-2"></div>
+    
+    <div id="chat-container">
+        <div id="chat-header">
+            <div class="header-info">
+                <div class="avatar-container">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Felix&backgroundColor=transparent" alt="Bot Avatar" class="bot-avatar">
+                    <div class="status-indicator"></div>
+                </div>
+                <div>
+                    <h2 style="margin:0; font-weight: 500; font-size: 1.3rem;">Onboarding Assistant</h2>
+                    <span id="stage-title" style="font-size: 13px; color: rgba(255,255,255,0.7);">Serverga ulanmoqda...</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="chat-messages">
+            <!-- Messages added here -->
+        </div>
+        
+        <div id="typing-indicator" style="display: none; padding: 0 20px 15px 20px;">
+            <div class="message bot typing">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        </div>
+        
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Xabaringizni yozing..." autocomplete="off">
+            <button id="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <h2 style="font-size: 2rem; margin-top: 0;"><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Tabriklaymiz!</h2>
+            <p style="font-size: 1.1rem; color: #f0f0f0;">Siz barcha bosqichlardan muvaffaqiyatli o'tdingiz. Malumotlar tizimga yozildi:</p>
+            <pre id="json-results"></pre>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
