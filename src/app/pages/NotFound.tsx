@@ -1,33 +1,25 @@
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { Button } from '@/app/components/ui/button';
-import { BookOpen, Home } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export function NotFound() {
-  const navigate = useNavigate();
-
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="text-center">
-        <div className="mb-8">
-          <h1 className="text-9xl font-bold text-purple-600">404</h1>
-          <div className="flex justify-center mt-4">
-            <BookOpen className="h-16 w-16 text-gray-400" />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50">
+      <div className="text-center space-y-6 p-8">
+        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+          <Sparkles className="w-10 h-10 text-white" />
         </div>
-        <h2 className="text-3xl font-bold mb-4">Sahifa topilmadi</h2>
-        <p className="text-gray-600 mb-8 max-w-md mx-auto">
-          Kechirasiz, siz qidirayotgan sahifa mavjud emas yoki ko'chirilgan.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <Button onClick={() => navigate('/')}>
-            <Home className="mr-2 h-4 w-4" />
-            Bosh Sahifa
-          </Button>
-          <Button onClick={() => navigate('/books')} variant="outline">
-            <BookOpen className="mr-2 h-4 w-4" />
-            Kitoblar
-          </Button>
+        <div>
+          <h1 className="text-6xl font-extrabold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            404
+          </h1>
+          <p className="text-xl text-muted-foreground mt-2">Sahifa topilmadi</p>
         </div>
+        <Link to="/">
+          <Button className="bg-gradient-to-r from-primary to-purple-600 text-white rounded-xl shadow-lg shadow-primary/20">
+            Bosh sahifaga qaytish
+          </Button>
+        </Link>
       </div>
     </div>
   );

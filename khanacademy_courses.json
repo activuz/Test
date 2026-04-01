@@ -1,0 +1,948 @@
+{
+  "total_courses": 3,
+  "courses": [
+    {
+      "url": "https://www.khanacademy.org/math/algebra",
+      "title": "Algebra 1",
+      "description": "The Algebra 1 course, often taught in the 9th grade, covers Linear equations, inequalities, functions, and graphs; Systems of equations and inequalities; Extension of the concept of a function; Exponential models; and Quadratic equations, functions, and graphs. Khan Academy's Algebra 1 course is built to deliver a comprehensive, illuminating, engaging, and Common Core aligned experience!  \n\n**Teaching this course? Check out our [teacher resources](https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:alg1-ccss-teacher-resources)!**",
+      "subject": "algebra",
+      "units": [
+        {
+          "title": "Welcome to Khan Academy!",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 1: Algebra foundations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Overview and history of algebra",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to variables",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Substitution and evaluating expressions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Combining like terms",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to equivalent expressions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Division by zero",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 2: Solving equations & inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Linear equations with variables on both sides",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Linear equations with parentheses",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Analyzing the number of solutions to linear equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Linear equations with unknown coefficients",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Multi-step inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Compound inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 3: Working with units",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Rate conversion",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Appropriate units",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Word problems with multiple units",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 4: Linear equations & graphs",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Two-variable linear equations intro",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Slope",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Horizontal & vertical lines",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "x-intercepts and y-intercepts",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Applying intercepts and slope",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modeling with linear equations and inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 5: Forms of linear equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Intro to slope-intercept form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Graphing slope-intercept equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Writing slope-intercept equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Point-slope form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Standard form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Summary: Forms of two-variable linear equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 6: Systems of equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to systems of equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Solving systems of equations with substitution",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Solving systems of equations with elimination",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Equivalent systems of equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Number of solutions to systems of equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Systems of equations word problems",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 7: Inequalities (systems & graphs)",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Checking solutions of two-variable inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Graphing two-variable inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modeling with linear inequalities",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 8: Functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Evaluating functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Inputs and outputs of a function",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Functions and equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Interpreting function notation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to the domain and range of a function",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Determining the domain of a function",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Recognizing functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Maximum and minimum points",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Intervals where a function is positive, negative, increasing, or decreasing",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Interpreting features of graphs",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Average rate of change",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Average rate of change word problems",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Intro to inverse functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 9: Sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to arithmetic sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Constructing arithmetic sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to geometric sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Constructing geometric sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modeling with sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "General sequences",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 10: Absolute value & piecewise functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Graphs of absolute value functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Piecewise functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 11: Exponents & radicals",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponent properties review",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Radicals",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Simplifying square roots",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 12: Exponential growth & decay",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential vs. linear growth",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential expressions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Graphs of exponential growth",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential vs. linear growth over time",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential growth & decay",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential functions from tables & graphs",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Exponential vs. linear models",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 13: Quadratics: Multiplying & factoring",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Multiplying monomials by polynomials",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Multiplying binomials",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Special products of binomials",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to factoring",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Factoring quadratics intro",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Factoring quadratics by grouping",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Factoring quadratics with difference of squares",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Factoring quadratics with perfect squares",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Strategy in factoring quadratics",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 14: Quadratic functions & equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Intro to parabolas",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Solving and graphing with factored form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Solving by taking the square root",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Vertex form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Solving quadratics by factoring",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "The quadratic formula",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Completing the square intro",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "More on completing the square",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Strategizing to solve quadratic equations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Quadratic standard form",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Features & forms of quadratic functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Comparing quadratic functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Transforming quadratic functions",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 15: Irrational numbers",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Irrational numbers",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Sums and products of rational and irrational numbers",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Proofs concerning irrational numbers",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 16: Creativity in algebra",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Creativity in algebra",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 17: Teacher resources",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Welcome to teacher resources",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Site Navigation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "About",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Contact",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Download our apps",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Courses",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Use of cookies",
+          "lessons": [],
+          "lesson_count": 0
+        }
+      ],
+      "total_units": 118,
+      "total_lessons": 0,
+      "scraped_at": "2026-04-01T10:59:34.994125"
+    },
+    {
+      "url": "https://www.khanacademy.org/science/physics",
+      "title": "Physics archive",
+      "description": "Physics the study of matter, motion, energy, and force.",
+      "subject": "physics",
+      "units": [
+        {
+          "title": "Welcome to Khan Academy!",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Physics archive",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 1: Forces and Newton's laws of motion",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Newton's laws of motion",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Normal force and contact force",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Inclined planes and friction",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Tension",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 2: Work and energy",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Work and energy",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 3: Waves",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Introduction to mechanical waves",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Sound",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "The Doppler effect",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Wave interference",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 4: Discoveries and projects",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Discovery of magnetism",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Discovery of magnetic fields",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Measuring magnetic fields",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Discovery of batteries",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Discovery of electromagnetism",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Discovery of resistors",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Electric motor",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Electrostatics",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Projectile launcher",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Thermo can",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Simple machines explorations",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Site Navigation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "About",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Contact",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Download our apps",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Courses",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Use of cookies",
+          "lessons": [],
+          "lesson_count": 0
+        }
+      ],
+      "total_units": 32,
+      "total_lessons": 0,
+      "scraped_at": "2026-04-01T10:59:40.006946"
+    },
+    {
+      "url": "https://www.khanacademy.org/computing/computer-science",
+      "title": "Computer science theory",
+      "description": "Explore advanced computer science topics from algorithms (how we solve common computing problems and measure our solutions' efficiency), to cryptography (how we protect secret information), to information theory (how we encode and compress information). Ideal for learners with some programming background.",
+      "subject": "computer-science",
+      "units": [
+        {
+          "title": "Welcome to Khan Academy!",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Advanced Concepts in Computer Science",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 1: Algorithms",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Intro to algorithms",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Binary search",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Asymptotic notation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Selection sort",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Insertion sort",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Recursive algorithms",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Towers of Hanoi",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Merge sort",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Quick sort",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Graph representation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Breadth-first search",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Further learning",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 2: Cryptography",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Ancient cryptography",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Ciphers",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Cryptography challenge 101",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modern cryptography",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modular arithmetic",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Primality test",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Randomized algorithms",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Unit 3: Information theory",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Ancient information theory",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Modern information theory",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Site Navigation",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "About",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Contact",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Download our apps",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Courses",
+          "lessons": [],
+          "lesson_count": 0
+        },
+        {
+          "title": "Use of cookies",
+          "lessons": [],
+          "lesson_count": 0
+        }
+      ],
+      "total_units": 32,
+      "total_lessons": 0,
+      "scraped_at": "2026-04-01T10:59:44.985789"
+    }
+  ]
+}

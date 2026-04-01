@@ -1,117 +1,120 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-interface User {
+export interface UserProfile {
+  personality_type: string;
+  mindset_label: string;
+  motivation_profile: string;
+  learning_style_summary: string;
+  ai_tone_setting: string;
+  risk_factors: string[];
+  strengths: string[];
+  recommended_subjects: string[];
+  weekly_plan: string;
+  full_summary: string;
+}
+
+export interface User {
   id: string;
   email: string;
   name: string;
-  isAdmin?: boolean;
+  onboardingCompleted: boolean;
+  onboardingData: Record<string, any>;
+  iqScore: number;
+  iqLevel: string;
+  iqBreakdown: Record<string, number>;
+  aiProfile: UserProfile | null;
 }
 
 interface AuthContextType {
   user: User | null;
-  accessToken: string | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   signup: (email: string, password: string, name: string) => Promise<void>;
   logout: () => void;
+  updateUser: (updates: Partial<User>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Check for saved auth on mount
   useEffect(() => {
-    const savedToken = localStorage.getItem('access_token');
-    const savedUser = localStorage.getItem('user');
-    
-    if (savedToken && savedUser) {
-      setAccessToken(savedToken);
+    const savedUser = localStorage.getItem('bilim_user');
+    if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-    
     setLoading(false);
   }, []);
 
-  const signup = async (email: string, password: string, name: string) => {
-    try {
-      // Get existing users from localStorage
-      const usersData = localStorage.getItem('users');
-      const users = usersData ? JSON.parse(usersData) : [];
-
-      // Check if user already exists
-      const existingUser = users.find((u: any) => u.email === email);
-      if (existingUser) {
-        throw new Error('Bu email allaqachon ro\'yxatdan o\'tgan');
-      }
-
-      // Create new user
-      const newUser = {
-        id: `user_${Date.now()}`,
-        email,
-        name,
-        password, // In real app, this should be hashed!
-        isAdmin: users.length === 0, // First user is admin
-        createdAt: new Date().toISOString()
-      };
-
-      // Save user
-      users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
-
-      // Auto login
-      await login(email, password);
-    } catch (error: any) {
-      console.error('Signup error:', error);
-      throw error;
+  const persistUser = (userData: User) => {
+    setUser(userData);
+    localStorage.setItem('bilim_user', JSON.stringify(userData));
+    // Also update in users list
+    const usersData = localStorage.getItem('bilim_users');
+    const users = usersData ? JSON.parse(usersData) : [];
+    const idx = users.findIndex((u: any) => u.id === userData.id);
+    if (idx >= 0) {
+      users[idx] = { ...users[idx], ...userData };
     }
+    localStorage.setItem('bilim_users', JSON.stringify(users));
+  };
+
+  const signup = async (email: string, password: string, name: string) => {
+    const usersData = localStorage.getItem('bilim_users');
+    const users = usersData ? JSON.parse(usersData) : [];
+
+    if (users.find((u: any) => u.email === email)) {
+      throw new Error("Bu email allaqachon ro'yxatdan o'tgan");
+    }
+
+    const newUser: User & { password: string } = {
+      id: `user_${Date.now()}`,
+      email,
+      name,
+      password,
+      onboardingCompleted: false,
+      onboardingData: {},
+      iqScore: 0,
+      iqLevel: '',
+      iqBreakdown: {},
+      aiProfile: null,
+    };
+
+    users.push(newUser);
+    localStorage.setItem('bilim_users', JSON.stringify(users));
+
+    const { password: _, ...userData } = newUser;
+    persistUser(userData);
   };
 
   const login = async (email: string, password: string) => {
-    try {
-      // Get users from localStorage
-      const usersData = localStorage.getItem('users');
-      const users = usersData ? JSON.parse(usersData) : [];
+    const usersData = localStorage.getItem('bilim_users');
+    const users = usersData ? JSON.parse(usersData) : [];
 
-      // Find user
-      const foundUser = users.find((u: any) => u.email === email && u.password === password);
-      
-      if (!foundUser) {
-        throw new Error('Email yoki parol noto\'g\'ri');
-      }
-
-      // Create session
-      const token = `token_${Date.now()}`;
-      const userData = {
-        id: foundUser.id,
-        email: foundUser.email,
-        name: foundUser.name,
-        isAdmin: foundUser.isAdmin
-      };
-
-      setAccessToken(token);
-      setUser(userData);
-      
-      localStorage.setItem('access_token', token);
-      localStorage.setItem('user', JSON.stringify(userData));
-    } catch (error: any) {
-      console.error('Login error:', error);
-      throw error;
+    const found = users.find((u: any) => u.email === email && u.password === password);
+    if (!found) {
+      throw new Error("Email yoki parol noto'g'ri");
     }
+
+    const { password: _, ...userData } = found;
+    persistUser(userData);
   };
 
   const logout = () => {
-    setAccessToken(null);
     setUser(null);
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('bilim_user');
+  };
+
+  const updateUser = (updates: Partial<User>) => {
+    if (!user) return;
+    const updated = { ...user, ...updates };
+    persistUser(updated);
   };
 
   return (
-    <AuthContext.Provider value={{ user, accessToken, loading, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, signup, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

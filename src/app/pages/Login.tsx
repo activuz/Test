@@ -5,55 +5,56 @@ import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
-import { Wand2, Loader2 } from 'lucide-react';
+import { Sparkles, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 export function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       await login(formData.email, formData.password);
       toast.success('Muvaffaqiyatli kirdingiz!');
-      navigate('/books');
-    } catch (error: any) {
-      console.error('Login error details:', error);
-      const errorMessage = error.message || 'Kirish xatosi';
-      
-      // Show more specific error messages
-      if (errorMessage.includes('fetch')) {
-        toast.error('Server bilan bog\'lanishda xatolik. Iltimos, qaytadan urinib ko\'ring.');
-      } else if (errorMessage.includes('Invalid') || errorMessage.includes('noto\'g\'ri')) {
-        toast.error('Email yoki parol noto\'g\'ri');
+
+      // Check onboarding status from updated user
+      const savedUser = localStorage.getItem('bilim_user');
+      if (savedUser) {
+        const userData = JSON.parse(savedUser);
+        if (userData.onboardingCompleted) {
+          navigate('/dashboard');
+        } else {
+          navigate('/onboarding');
+        }
       } else {
-        toast.error(errorMessage);
+        navigate('/onboarding');
       }
+    } catch (error: any) {
+      toast.error(error.message || 'Kirish xatosi');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-br from-violet-50 via-purple-50 to-fuchsia-50 relative overflow-hidden">
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+
+      <Card className="w-full max-w-md relative z-10 bg-white/80 backdrop-blur-xl border-primary/5 shadow-xl shadow-primary/5 rounded-2xl">
+        <CardHeader className="text-center pb-2">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
-              <Wand2 className="h-8 w-8 text-purple-600" />
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+              <Sparkles className="h-8 w-8 text-white" />
             </div>
           </div>
-          <CardTitle className="text-2xl">MagiBook'ga Kirish</CardTitle>
+          <CardTitle className="text-2xl font-bold">BilimAi'ga Kirish</CardTitle>
           <CardDescription>
-            Interaktiv kitoblar dunyo siga qaytib keling
+            Ta'lim sayohatingizni davom ettiring
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -61,43 +62,39 @@ export function Login() {
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="email@example.com"
+                id="email" type="email" placeholder="email@example.com"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                disabled={loading}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+                required disabled={loading}
+                className="h-12 rounded-xl bg-white/80 border-primary/10 focus:border-primary/40"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Parol</Label>
               <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
+                id="password" type="password" placeholder="••••••••"
                 value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                required
-                disabled={loading}
+                onChange={e => setFormData({ ...formData, password: e.target.value })}
+                required disabled={loading}
+                className="h-12 rounded-xl bg-white/80 border-primary/10 focus:border-primary/40"
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-purple-600 text-white font-semibold shadow-lg shadow-primary/20" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Kirish
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex flex-col gap-4">
-          <div className="text-sm text-center text-gray-600">
+        <CardFooter className="flex flex-col gap-3 pt-0">
+          <div className="text-sm text-center text-muted-foreground">
             Hisobingiz yo'qmi?{' '}
-            <Link to="/signup" className="text-purple-600 hover:underline">
+            <Link to="/signup" className="text-primary font-medium hover:underline">
               Ro'yxatdan o'ting
             </Link>
           </div>
           <div className="text-sm text-center">
-            <Link to="/" className="text-gray-600 hover:underline">
-              ← Bosh sahifaga qaytish
+            <Link to="/" className="text-muted-foreground hover:text-primary hover:underline">
+              ← Bosh sahifaga
             </Link>
           </div>
         </CardFooter>
